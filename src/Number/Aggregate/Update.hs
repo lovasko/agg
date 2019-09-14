@@ -84,7 +84,7 @@ updateSum :: Floating a
   -> A.Aggregate a -- ^ aggregate
 updateSum new cur = A.Sum (cur + new)
 
--- | Udate the first value seen.
+-- | Update the first value seen.
 updateFirst :: Floating a
   => a       -- ^ new value
   -> Maybe a -- ^ current value
