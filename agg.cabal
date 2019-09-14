@@ -1,0 +1,41 @@
+name:                agg
+version:             1.0.0
+synopsis:            Aggregate Functions for Streaming Numbers 
+description:         Number.Aggregate offers multiple aggregate
+                     functions that can be used to perform statistical analysis
+                     of a collection of numbers.
+
+                     Every function implemented as an on-line streaming
+                     algorithm that updates the overall aggregate after
+                     each processed number.As a result, this module can be used
+                     to process large data sets that do not fit into
+                     conventional memory, or for data sets which size is not
+                     known beforehand, e.g. based on user input.
+
+                     Implemented functions include minimum, maximum, average,
+                     variance, standard deviation, skewness, kurtosis,
+                     quantiles and others. All functions offer constant space
+                     and linear time with the cardinality of the collection.
+homepage:            https://github.com/lovasko/agg
+license:             OtherLicense
+license-file:        LICENSE
+author:              Daniel Lovasko <daniel.lovasko@gmail.com>
+maintainer:          Daniel Lovasko <daniel.lovasko@gmail.com>
+copyright:           2019 Daniel Lovasko
+category:            Number
+build-type:          Simple
+cabal-version:       >=1.10
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     Number.Aggregate
+  other-modules:       Number.Aggregate.Get
+                     , Number.Aggregate.Start
+                     , Number.Aggregate.Type
+                     , Number.Aggregate.Update
+  build-depends:       base >= 4.7 && < 5
+  default-language:    Haskell2010
+
+source-repository head
+  type:     git
+  location: https://github.com/lovasko/agg
