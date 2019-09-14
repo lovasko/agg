@@ -21,12 +21,12 @@ import Data.Word
 
 
 -- | Aggregate function.
-data Aggregate
- = Average  Word64 (Maybe Double) -- count, average
- | Minimum  (Maybe Double)        -- minimum
- | Maximum  (Maybe Double)        -- maximum
- | Sum      Double                -- sum
+data Aggregate a
+ = Average  Word64 (Maybe a) -- count, average
+ | Minimum  (Maybe a)        -- minimum
+ | Maximum  (Maybe a)        -- maximum
+ | Sum      a                -- sum
  | Count    Word64                -- count
- | Variance Word64 (Maybe Double) Double -- count, average, second moment
- | First    (Maybe Double)        -- first
- | Last     (Maybe Double)        -- last
+ | Variance Word64 (Maybe a) a -- count, average, second moment
+ | First    (Maybe a)        -- first
+ | Last     (Maybe a)        -- last

@@ -14,8 +14,8 @@ readDouble = do
 
 -- | Read-Eval-Print loop.
 loop
-  :: A.Aggregate -- ^ average
-  -> A.Aggregate -- ^ variance
+  :: A.Aggregate Double -- ^ average
+  -> A.Aggregate Double -- ^ variance
   -> IO ()       -- ^ action
 loop avg var = do
   -- | Prompt the user for the next number.

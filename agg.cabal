@@ -1,9 +1,10 @@
 name:                agg
-version:             1.0.0
+version:             1.1.0
 synopsis:            Aggregate Functions for Streaming Numbers 
 description:         Number.Aggregate offers multiple aggregate
                      functions that can be used to perform statistical analysis
-                     of a collection of numbers.
+                     of a collection of numbers. The required typeclasses are
+                     Floating and Ord.
 
                      Every function implemented as an on-line streaming
                      algorithm that updates the overall aggregate after

@@ -22,10 +22,10 @@ import qualified Number.Aggregate.Type as A
 
 
 -- | 
-getVariance
-  :: Word64       -- ^ count
-  -> Double       -- ^ second moment
-  -> Maybe Double -- ^ variance
+getVariance :: Floating a
+  => Word64   -- ^ count
+  -> a       -- ^ second moment
+  -> Maybe a -- ^ variance
 getVariance cnt mom
   | cnt == 0  = Nothing
   | cnt == 1  = Just 0.0
@@ -35,9 +35,9 @@ getVariance cnt mom
 -- aggregate functions, it is possible that a value has not been computed due
 -- to insufficient input size, e.g. only a single value was provided, which
 -- does not have a variance.
-get
-  :: A.Aggregate  -- ^ aggregate
-  -> Maybe Double -- ^ value
+get :: Floating a
+  => A.Aggregate a -- ^ aggregate
+  -> Maybe a       -- ^ value
 get (A.Average _ cur)        = cur
 get (A.Variance cnt _ mom) = getVariance cnt mom
 get (A.Minimum val)          = val
