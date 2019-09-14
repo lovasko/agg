@@ -44,6 +44,13 @@ executable agg-example-fold
                      , containers
   default-language:    Haskell2010
 
+executable agg-example-stdin
+  hs-source-dirs:      examples
+  main-is:             Stdin.hs
+  build-depends:       base
+                     , agg
+  default-language:    Haskell2010
+
 source-repository head
   type:     git
   location: https://github.com/lovasko/agg
