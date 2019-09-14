@@ -29,7 +29,7 @@ getVariance :: Floating a
 getVariance cnt mom
   | cnt == 0  = Nothing
   | cnt == 1  = Just 0.0
-  | otherwise = Just $ mom / (fromIntegral cnt)
+  | otherwise = Just $ mom / fromIntegral cnt
 
 -- | Obtain the current aggregated value. Due to the nature of some of the
 -- aggregate functions, it is possible that a value has not been computed due
