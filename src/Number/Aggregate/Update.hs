@@ -23,9 +23,9 @@ import qualified Number.Aggregate.Type as A
 
 -- | Update the average of all values.
 updateAverage :: Floating a
-  => a       -- ^ new value
-  -> Maybe a -- ^ old average
-  -> Word64       -- ^ population count
+  => a             -- ^ new value
+  -> Maybe a       -- ^ old average
+  -> Word64        -- ^ population count
   -> A.Aggregate a -- ^ new average
 updateAverage new Nothing    cnt = A.Average (cnt + 1) (Just new)
 updateAverage new (Just cur) cnt = A.Average (cnt + 1) (Just avg')
@@ -35,8 +35,8 @@ updateAverage new (Just cur) cnt = A.Average (cnt + 1) (Just avg')
 
 -- | Update the minimum of all values.
 updateMinimum :: (Floating a, Ord a)
-  => a       -- ^ new value
-  -> Maybe a -- ^ current minimum
+  => a             -- ^ new value
+  -> Maybe a       -- ^ current minimum
   -> A.Aggregate a -- ^ new aggregate
 updateMinimum new Nothing      = A.Minimum (Just new)
 updateMinimum new cur@(Just val)
@@ -45,9 +45,9 @@ updateMinimum new cur@(Just val)
 
 -- | Utility function to update the aggregator of the maximal value.
 updateMaximum :: (Floating a, Ord a)
-  => a       -- ^ new value
-  -> Maybe a -- ^ current value
-  -> A.Aggregate a  -- ^ new value
+  => a             -- ^ new value
+  -> Maybe a       -- ^ current value
+  -> A.Aggregate a -- ^ new value
 updateMaximum new Nothing    = A.Maximum (Just new)
 updateMaximum new cur@(Just val)
   | new > val                = A.Maximum (Just new)
@@ -58,11 +58,11 @@ updateMaximum new cur@(Just val)
 -- variance function needs to compute its own average. This is a known (and
 -- accepted) downside of the module.
 updateVariance :: Floating a
-  => a       -- ^ new value
-  -> Word64       -- ^ value count
-  -> Maybe a -- ^ current average
-  -> a       -- ^ second moment
-  -> A.Aggregate a  -- ^ aggregate
+  => a             -- ^ new value
+  -> Word64        -- ^ value count
+  -> Maybe a       -- ^ current average
+  -> a             -- ^ second moment
+  -> A.Aggregate a -- ^ aggregate
 updateVariance new cnt Nothing    mom = A.Variance (cnt + 1) (Just new)  0.0
 updateVariance new cnt (Just avg) mom = A.Variance (cnt + 1) (Just avg') mom'
   where
@@ -73,29 +73,29 @@ updateVariance new cnt (Just avg) mom = A.Variance (cnt + 1) (Just avg') mom'
 
 -- | Update the number of all seen values.
 updateCount :: Floating a
-  => Word64      -- ^ current count
+  => Word64        -- ^ current count
   -> A.Aggregate a -- ^ new aggregate
 updateCount cnt = A.Count (cnt + 1)
 
 -- | Update the sum of all seen values.
 updateSum :: Floating a
-  => a      -- ^ new value
-  -> a      -- ^ current value
+  => a             -- ^ new value
+  -> a             -- ^ current value
   -> A.Aggregate a -- ^ aggregate
 updateSum new cur = A.Sum (cur + new)
 
 -- | Update the first value seen.
 updateFirst :: Floating a
-  => a       -- ^ new value
-  -> Maybe a -- ^ current value
-  -> A.Aggregate a  -- ^ new aggregate
+  => a             -- ^ new value
+  -> Maybe a       -- ^ current value
+  -> A.Aggregate a -- ^ new aggregate
 updateFirst new Nothing = A.First (Just new)
 updateFirst new cur     = A.First cur
 
 -- | Update the last value seen. The current value is irrelevant as the
 -- aggregate of the last value always only updates the value.
 updateLast :: Floating a
-  => a      -- ^ new value
+  => a             -- ^ new value
   -> A.Aggregate a -- ^ new aggregate
 updateLast new = A.Last (Just new)
 
@@ -103,7 +103,7 @@ updateLast new = A.Last (Just new)
 -- pattern, unpacks the internals and passes them onto a specialized function that
 -- creates a new instance of the aggregator.
 update :: (Floating a, Ord a)
-  => a      -- ^ new value
+  => a             -- ^ new value
   -> A.Aggregate a -- ^ old aggregate
   -> A.Aggregate a -- ^ new aggregate
 update new (A.Average cnt cur)      = updateAverage  new cur cnt
