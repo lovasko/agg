@@ -21,7 +21,7 @@ import Data.Word
 import qualified Number.Aggregate.Type as A
 
 
--- | 
+-- | Compute the variance based on the accumulated data.
 getVariance :: Floating a
   => Word64   -- ^ count
   -> a       -- ^ second moment
