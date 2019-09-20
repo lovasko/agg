@@ -40,8 +40,8 @@ get :: Floating a
   -> Maybe a       -- ^ value
 get (A.Average _ cur)      = cur
 get (A.Variance cnt _ mom) = getVariance cnt mom
-get (A.Minimum val)        = val
-get (A.Maximum val)        = val
+get (A.Minimum cur)        = cur
+get (A.Maximum cur)        = cur
 get (A.Count cnt)          = Just $ fromIntegral cnt
 get (A.Sum cur)            = Just cur
 get (A.First cur)          = cur
