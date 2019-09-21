@@ -1,6 +1,6 @@
 {- |
 Module      : Number.Aggregate.Update
-Description : Update exisiting aggregate based on a new value.
+Description : Update existing aggregate based on a new value.
 Copyright   : (c) 2019 Daniel Lovasko
 License     : BSD2
 
@@ -8,12 +8,12 @@ Maintainer  : Daniel Lovasko <daniel.lovasko@gmail.com>
 Stability   : stable
 Portability : portable
 
-Number.Aggregate.Update provides a set of functions to initialize the process of
-aggregation of a stream of numbers.
+Number.Aggregate.Update implements a function that recomputes the aggregate of
+the stream by incorporating the new value.
 -}
 
 module Number.Aggregate.Update
-( update
+( update -- a -> Aggregate a -> Aggregate a
 ) where
 
 import Data.Word

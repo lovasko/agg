@@ -8,8 +8,8 @@ Maintainer  : Daniel Lovasko <daniel.lovasko@gmail.com>
 Stability   : stable
 Portability : portable
 
-Number.Aggregate.Start provides a set of functions to initialize the process of
-aggregation of a stream of numbers.
+Number.Aggregate.Get implements a function that inspects the current aggregate
+and, if possible, computes the final value given the proccessed stream so far.
 -}
 
 module Number.Aggregate.Get
