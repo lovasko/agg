@@ -19,19 +19,19 @@ The proposed convention on importing this module:
 
 module Number.Aggregate (
 -- Container.
-  Aggregate   -- *           -> *
+  Aggregate -- *           -> *
 
 -- Core functionality.
 , get       -- Aggregate a -> Maybe a
 , update    -- a           -> Aggregate a -> Aggregate a
 
 -- Constructors.
-, minimum   -- Aggregate a
-, maximum   -- Aggregate a
 , first     -- Aggregate a
 , last      -- Aggregate a
 , count     -- Aggregate a
 , sum       -- Aggregate a
+, minimum   -- Aggregate a
+, maximum   -- Aggregate a
 , average   -- Aggregate a
 , variance  -- Aggregate a
 ) where

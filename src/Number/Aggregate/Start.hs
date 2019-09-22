@@ -13,14 +13,14 @@ aggregation of a stream of numbers.
 -}
 
 module Number.Aggregate.Start
-( first
-, last
-, minimum
-, maximum
-, count
-, sum
-, average
-, variance 
+( first    -- Aggregate a
+, last     -- Aggregate a
+, count    -- Aggregate a
+, sum      -- Aggregate a
+, minimum  -- Aggregate a
+, maximum  -- Aggregate a
+, average  -- Aggregate a
+, variance -- Aggregate a
 ) where
 
 import Prelude hiding (first, last, minimum, maximum, sum)
@@ -37,16 +37,6 @@ last :: Floating a
   => A.Aggregate a -- ^ aggregate
 last = A.Last Nothing
 
--- | Start aggregating the minimal number of the stream.
-minimum :: Floating a
-  => A.Aggregate a -- ^ aggregate
-minimum = A.Minimum Nothing
-
--- | Start aggregating the maximal number of the stream.
-maximum :: Floating a
-  => A.Aggregate a -- ^ aggregate
-maximum = A.Maximum Nothing
-
 -- | Start counting the numbers in the stream.
 count :: Floating a
   => A.Aggregate a -- ^ aggregate
@@ -56,6 +46,16 @@ count = A.Count 0
 sum :: Floating a
   => A.Aggregate a -- ^ aggregate
 sum = A.Sum 0
+
+-- | Start aggregating the minimal number of the stream.
+minimum :: Floating a
+  => A.Aggregate a -- ^ aggregate
+minimum = A.Minimum Nothing
+
+-- | Start aggregating the maximal number of the stream.
+maximum :: Floating a
+  => A.Aggregate a -- ^ aggregate
+maximum = A.Maximum Nothing
 
 -- | Start aggregating the average of a stream of numbers.
 average :: Floating a

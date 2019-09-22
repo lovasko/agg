@@ -14,7 +14,7 @@ be exported to the user, with all constructors to remain private.
 -}
 
 module Number.Aggregate.Type
-( Aggregate(..)
+( Aggregate(..) -- * -> *
 ) where
 
 import Data.Word
@@ -22,11 +22,11 @@ import Data.Word
 
 -- | Aggregate function.
 data Aggregate a
- = Average  Word64 (Maybe a) -- count, average
+ = First    (Maybe a)        -- first
+ | Last     (Maybe a)        -- last
+ | Count    Word64                -- count
+ | Sum      a                -- sum
  | Minimum  (Maybe a)        -- minimum
  | Maximum  (Maybe a)        -- maximum
- | Sum      a                -- sum
- | Count    Word64                -- count
+ | Average  Word64 (Maybe a) -- count, average
  | Variance Word64 (Maybe a) a -- count, average, second moment
- | First    (Maybe a)        -- first
- | Last     (Maybe a)        -- last
